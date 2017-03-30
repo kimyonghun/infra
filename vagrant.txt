@@ -1,0 +1,27 @@
+# boxファイル取得 & box登録
+        $ vagrant box add centos/7
+
+# box一覧確認
+        $ vagrant box list
+        centos/7 (virtualbox, 1702.01)
+
+# 仮想環境作るDIRに移動
+        $ mkdir hogehoge
+        $ cd hogehoge
+
+# Vagrantfile作る
+        $ vagrant init
+
+# 使用box修正
+        $ vi Vagrantfile
+        
+        < config.vm.box = "base"
+        > config.vm.box = "centos/7"
+
+        < # config.vm.network "private_network", ip: "192.168.33.10"
+        > config.vm.network "private_network", ip: "192.168.33.10"
+# 仮想環境構築
+        $ vagrant up
+
+# ssh設定を取り込む
+        $ vagrant ssh-config --host 192.168.33.10 >> ~/.ssh/config
